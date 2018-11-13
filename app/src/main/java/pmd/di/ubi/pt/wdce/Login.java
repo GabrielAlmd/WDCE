@@ -22,6 +22,7 @@ public class Login extends Activity {
         db = new DatabaseHelper(this);
         eUser = findViewById(R.id.user);
         ePass = findViewById(R.id.pass);
+        
 
     }
 
