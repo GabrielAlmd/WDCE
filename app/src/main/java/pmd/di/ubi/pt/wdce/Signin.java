@@ -58,4 +58,11 @@ public class Signin extends Activity {
                 Toast.makeText(getApplicationContext(), "Password do not match", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+
+    public void takeMeBack (View view){
+        super.finish();
+        Toast.makeText(getApplicationContext(), "YOU FORGOT YOURSELF TO REGISTER !!", Toast.LENGTH_SHORT).show();
+    }
 }

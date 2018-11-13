@@ -3,9 +3,12 @@ package pmd.di.ubi.pt.wdce;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import static android.content.ContentValues.TAG;
 
 public class Login extends Activity {
 
@@ -41,7 +44,9 @@ public class Login extends Activity {
             getMeGoing.putExtra("player",user);
             startActivity(getMeGoing);
 
-            Toast.makeText(getApplicationContext(), "Successfully LogIn", Toast.LENGTH_SHORT).show();
+            Log.i(TAG, "letsGo: " + user);
+
+            //Toast.makeText(getApplicationContext(), "Successfully LogIn", Toast.LENGTH_SHORT).show();
 
         }
         else
