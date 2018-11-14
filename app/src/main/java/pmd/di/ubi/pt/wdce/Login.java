@@ -47,7 +47,7 @@ public class Login extends Activity {
 
             Log.i(TAG, "letsGo: " + user);
 
-            //Toast.makeText(getApplicationContext(), "Successfully LogIn", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Successfully LogIn", Toast.LENGTH_SHORT).show();
 
         }
         else

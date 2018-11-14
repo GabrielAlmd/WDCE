@@ -1,25 +1,39 @@
 package pmd.di.ubi.pt.wdce;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+
+import static android.content.ContentValues.TAG;
 
 public class FristRound extends Activity {
 
-    //Criar variável que verifica se ele acertou ou não 0 - acertou / 1 - Errou
+    int certo = 0; //0 - acertou / 1 - Errou
     //Variavel que guarda o que escreve na texview
     //valor do score feito
-    //receber o user
+    String player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frist_round);
 
-        //se 0
-        // Defenir a texview
+        //Recebe o user id
+        Intent playerID = getIntent();
+        Bundle extras = playerID.getExtras();
+        player = extras.getString("player");
+        Log.i(TAG, "User ID: " + player + " => FristRound.class");
 
-        //Se 1
-        // manter o que estava
+        if(certo == 0){
+            // Defenir a texview
+        }
+
+
+        if(certo == 1){
+            // manter o que estava
+        }
+
     }
 
     //Função do botão a verificar se está certo

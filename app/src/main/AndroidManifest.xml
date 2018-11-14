@@ -26,6 +26,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
+
         <activity android:name=".FristRound" />
         <activity android:name=".LastRound" />
         <activity android:name=".Final"></activity>
