@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 import static android.content.ContentValues.TAG;
 
@@ -14,10 +17,7 @@ public class FristRound extends Activity {
 
     TextView semi;
 
-    RandomWord r;
-
     int certo = 0; //0 - acertou / 1 - Errou
-    String fWord;// full word
 
     //valor do score feito
     String player;
@@ -37,15 +37,7 @@ public class FristRound extends Activity {
 
         if(certo == 0){
             // Defenir a texview
-            /*
-            try {
-                fWord = r.selectRadomWordFromFile();
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
 
-
-            semi.setText(fWord);*/
         }
 
 
