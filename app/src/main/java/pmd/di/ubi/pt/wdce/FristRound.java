@@ -4,13 +4,21 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.TextView;
+
+import java.io.FileNotFoundException;
 
 import static android.content.ContentValues.TAG;
 
 public class FristRound extends Activity {
 
+    TextView semi;
+
+    RandomWord r;
+
     int certo = 0; //0 - acertou / 1 - Errou
-    //Variavel que guarda o que escreve na texview
+    String fWord;// full word
+
     //valor do score feito
     String player;
 
@@ -18,6 +26,8 @@ public class FristRound extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frist_round);
+
+        semi = findViewById(R.id.semi);
 
         //Recebe o user id
         Intent playerID = getIntent();
@@ -27,6 +37,15 @@ public class FristRound extends Activity {
 
         if(certo == 0){
             // Defenir a texview
+            /*
+            try {
+                fWord = r.selectRadomWordFromFile();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+            semi.setText(fWord);*/
         }
 
 

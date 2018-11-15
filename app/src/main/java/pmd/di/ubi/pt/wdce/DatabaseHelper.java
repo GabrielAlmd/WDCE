@@ -14,7 +14,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create table user(email text primary key, user text, password text, score intege)");
+        db.execSQL("Create table user(email text primary key, user text, password text, score intege, level integer)");
     }
 
     @Override
@@ -30,6 +30,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put("user", user);
         contentValues.put("password", password);
         contentValues.put("score", 0);
+        contentValues.put("level",0);
         long ins = db.insert("user", null, contentValues);
         if(ins == -1)
             return false;
