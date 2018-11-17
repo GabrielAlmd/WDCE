@@ -16,13 +16,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("Create table user(email text primary key, user text, password text, score intege, level integer)");
-        db.execSQL("Create table dic(word text primary key)");
+        //db.execSQL("Create table dic(word text primary key)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists user");
-        db.execSQL("drop table if exists dic");
+        //db.execSQL("drop table if exists dic");
     }
 
     //inserir na user
@@ -95,6 +95,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //insere na dic
+    /*
     public boolean insertword (){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -430,6 +431,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         else
             return true;
-    }
+    }*/
 
 }
