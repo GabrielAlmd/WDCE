@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -11,7 +13,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.lang.Object.*;
 import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
@@ -19,13 +20,17 @@ import static android.content.ContentValues.TAG;
 public class FristRound extends Activity {
 
     TextView semi;
+    EditText attempt;
 
     String right = "";
     String line="";
+    String eTextAttempt ="";
+
+
 
     int certo = 0; //0 - acertou / 1 - Errou
-
-    //valor do score feito
+    int scoreround;//valor do score feito
+    int nTrys = 1;
     String player = "";
 
     @Override
@@ -34,6 +39,7 @@ public class FristRound extends Activity {
         setContentView(R.layout.activity_frist_round);
 
         semi = findViewById(R.id.semi);
+        attempt = findViewById(R.id.attempt);
 
         //Recebe o user id
         Intent playerID = getIntent();
@@ -58,7 +64,7 @@ public class FristRound extends Activity {
 
             int index = (int) (Math.random() * listS.size());
             right = listS.get(index);
-
+            listS.clear();
             Log.i(TAG, "Right word " + right);
 
             int max = (int) (Math.random() * right.length());
@@ -78,30 +84,43 @@ public class FristRound extends Activity {
 
 
         if(certo == 1){
-            // manter o que estava
+
         }
 
     }
 
     //Função do botão a verificar se está certo
+    public void chkifright (View view){
 
+        eTextAttempt = attempt.getText().toString();
+        Log.i(TAG, "chkifright: try is " + eTextAttempt);
+        Log.i(TAG, "chkifright: score is " + scoreround);
 
-        //variavel para contar as vezes de erro
+        if (eTextAttempt.equals(right)) {//Se certo
+            certo = 0;//Mete a variavel de certo a 0
+            scoreround = (1000 / nTrys); //calcula o score
+            eTextAttempt = "";
 
-        //Se certo
-            //Mete a variavel de certo a 0
-            //calcula o score
+            //muda a palavra e segue jogo
+            Intent intent = getIntent();
+            finish();
+            startActivity(intent);
 
-        //Se errado
+        }
+        else { //Se errado
+            nTrys +=1;// adicionar +1 nas variaveis de erro
 
-            //adicionar +1 nas variaveis de erro
             //se a varialvel erro < 5
-                //dar clean no editext
-                //e tenta de novo toast
-            //se a variavel erro > 5
+        //dar clean no editext
+        //e tenta de novo toast
+        //se a variavel erro > 5
 
-                //fazer intent para a class lastround
-                //toast está dificil
-                //passar o score e o user
-                //passar a palavra
+        //fazer intent para a class lastround
+        //toast está dificil
+        //passar o score e o user
+        //passar a palavra
+        }
+    }
+
+
 }

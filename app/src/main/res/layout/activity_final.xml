@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/nowScore"/>
+        app:layout_constraintBottom_toTopOf="@id/nowScore"/>
 
 
     <TextView
@@ -22,20 +22,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your level is : x"
-        app:layout_constraintTop_toBottomOf="@+id/userid"
+        app:layout_constraintTop_toBottomOf="@id/userid"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/nowScore"/>
+        app:layout_constraintBottom_toTopOf="@id/nowScore"/>
 
     <TextView
         android:id="@+id/nowScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="You made:    points"
-        app:layout_constraintTop_toBottomOf="@+id/level"
+        app:layout_constraintTop_toBottomOf="@id/level"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/totalScore"/>
+        app:layout_constraintBottom_toTopOf="@id/totalScore"/>
 
 
 
@@ -44,27 +44,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Total Score:    points"
-        app:layout_constraintTop_toBottomOf="@+id/nowScore"
+        app:layout_constraintTop_toBottomOf="@id/nowScore"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/again"/>
+        app:layout_constraintBottom_toTopOf="@id/again"/>
 
     <Button
         android:id="@+id/again"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Let's go again"
-        app:layout_constraintTop_toBottomOf="@+id/totalScore"
+        app:layout_constraintTop_toBottomOf="@id/totalScore"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/exit"
+        app:layout_constraintRight_toLeftOf="@id/exit"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <Button
         android:id="@+id/exit"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Exit Game"
-        app:layout_constraintTop_toBottomOf="@+id/totalScore"
+        app:layout_constraintTop_toBottomOf="@id/totalScore"
         app:layout_constraintLeft_toRightOf="@id/again"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
