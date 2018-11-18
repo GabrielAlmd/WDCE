@@ -7,13 +7,12 @@ import android.util.Log;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.lang.Object.*;
+import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
 
@@ -21,10 +20,13 @@ public class FristRound extends Activity {
 
     TextView semi;
 
+    String right = "";
+    String line="";
+
     int certo = 0; //0 - acertou / 1 - Errou
 
     //valor do score feito
-    String player;
+    String player = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +38,13 @@ public class FristRound extends Activity {
         //Recebe o user id
         Intent playerID = getIntent();
         Bundle extras = playerID.getExtras();
-        player = extras.getString("player");
+        player = Objects.requireNonNull(extras).getString("player");
         Log.i(TAG, "User ID: " + player + " => FristRound.class");
 
         if(certo == 0){
-            // Defenir a texview
+            //le  o ficheiro mete num vetor e seleciona uma palavra rand
 
-            String line = "";
-            ArrayList<String> listS = new ArrayList<String>();
+            ArrayList<String> listS = new ArrayList<>();
             InputStream inputStream = getResources().openRawResource(R.raw.dictionary);
 
             BufferedReader bReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -56,7 +57,22 @@ public class FristRound extends Activity {
             }
 
             int index = (int) (Math.random() * listS.size());
-            semi.setText(listS.get(index));
+            right = listS.get(index);
+
+            Log.i(TAG, "Right word " + right);
+
+            int max = (int) (Math.random() * right.length());
+
+            String cut = right.substring(0,max);
+
+
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < (right.length()-max); i++) {
+                builder.append("*");
+            }
+            String sfinal = cut+builder.toString();
+            semi.setText(sfinal);
+            builder.setLength(0);
 
         }
 

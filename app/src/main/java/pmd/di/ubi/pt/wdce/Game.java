@@ -6,14 +6,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Objects;
 
 import static android.content.ContentValues.TAG;
 
 public class Game extends Activity {
 
+    TextView text;
+
     //Guardar o user do intento anterior e passar para a proxima atividade
-    String player;
+    String player = "";
     DatabaseHelper db;
 
     @Override
@@ -21,16 +26,16 @@ public class Game extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        text = findViewById(R.id.text);
+
         //Recebe o user id
         Intent playerID = getIntent();
         Bundle extras = playerID.getExtras();
-        player = extras.getString("player");
-        Log.i(TAG, "User ID: " + player + " => Game.class");
+        player = Objects.requireNonNull(extras).getString("player");
 
-        //boolean insert = db.insertword();
-       // if (insert == true)
-        //    Toast.makeText(getApplicationContext(), "Dic. Successfully!!", Toast.LENGTH_SHORT).show();
-       // else Toast.makeText(getApplicationContext(), "Dic. Fail!!", Toast.LENGTH_SHORT).show();
+        String toprint="Lest Star "+player;
+        text.setText(toprint);
+        Log.i(TAG, "User ID: " + player + " => Game.class");
 
     }
 
