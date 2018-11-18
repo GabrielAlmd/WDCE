@@ -6,8 +6,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -37,6 +41,21 @@ public class FristRound extends Activity {
 
         if(certo == 0){
             // Defenir a texview
+
+            String line = "";
+            StringBuilder finalString = new StringBuilder();
+            InputStream inputStream = getResources().openRawResource(R.raw.dictionary);
+
+            BufferedReader bReader = new BufferedReader(new InputStreamReader(inputStream));
+
+            try {
+                while ((line = bReader.readLine()) != null)
+                    finalString.append(line);
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
+            semi.setText(finalString);
 
         }
 
