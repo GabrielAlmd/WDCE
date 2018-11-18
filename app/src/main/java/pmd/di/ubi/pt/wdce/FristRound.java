@@ -43,19 +43,20 @@ public class FristRound extends Activity {
             // Defenir a texview
 
             String line = "";
-            StringBuilder finalString = new StringBuilder();
+            ArrayList<String> listS = new ArrayList<String>();
             InputStream inputStream = getResources().openRawResource(R.raw.dictionary);
 
             BufferedReader bReader = new BufferedReader(new InputStreamReader(inputStream));
 
             try {
                 while ((line = bReader.readLine()) != null)
-                    finalString.append(line);
+                    listS.add(line);
             }catch (IOException e){
                 e.printStackTrace();
             }
 
-            semi.setText(finalString);
+            int index = (int) (Math.random() * listS.size());
+            semi.setText(listS.get(index));
 
         }
 
