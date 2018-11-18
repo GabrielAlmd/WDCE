@@ -1,17 +1,31 @@
 package pmd.di.ubi.pt.wdce;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+
+import java.util.Objects;
+
+import static android.content.ContentValues.TAG;
 
 public class Final extends Activity {
 
     //variavel score
-    //variavel user
+    String player;//variavel user
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_final);
+
+
+        Intent playerID = getIntent();
+        Bundle extras = playerID.getExtras();
+        player = Objects.requireNonNull(extras).getString("player");
+        Log.i(TAG, "User ID: " + player + " => Final.class");
+
 
         //pega no score do user e adiciona pontos
 
@@ -20,9 +34,16 @@ public class Final extends Activity {
 
     }
 
-    //Função vamos de novo
-        //volta para a class game
+    public void lestgoagain (View view){//Função vamos de novo
+        Intent again = new Intent(this, Game.class);
+        again.putExtra("player",player);
+        startActivity(again);
+    }
 
-    //Funçao fechar por completo
+
+    public void closeall (View view){//Funçao fechar por completo
+        finishAffinity();
+        finish();
+    }
 
 }

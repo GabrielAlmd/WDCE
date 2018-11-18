@@ -94,11 +94,13 @@ public class FristRound extends Activity {
 
         eTextAttempt = attempt.getText().toString();
         Log.i(TAG, "chkifright: try is " + eTextAttempt);
-        Log.i(TAG, "chkifright: score is " + scoreround);
+
 
         if (eTextAttempt.equals(right)) {//Se certo
             certo = 0;//Mete a variavel de certo a 0
             scoreround = (1000 / nTrys); //calcula o score
+
+            Log.i(TAG, "chkifright: score is " + scoreround);
             eTextAttempt = "";
 
             //muda a palavra e segue jogo
@@ -120,6 +122,13 @@ public class FristRound extends Activity {
         //passar o score e o user
         //passar a palavra
         }
+    }
+
+    public void imgone (View view){
+
+        Intent letmego = new Intent(this, Final.class);
+        letmego.putExtra("player",player);
+        startActivity(letmego);
     }
 
 
