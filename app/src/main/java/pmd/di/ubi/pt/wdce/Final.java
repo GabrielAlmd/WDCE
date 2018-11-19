@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.Objects;
 
@@ -12,8 +13,14 @@ import static android.content.ContentValues.TAG;
 
 public class Final extends Activity {
 
-    //variavel score
+    TextView userid;
+    TextView totalScore;
+
+    DatabaseHelper db;
+
+    int userSocer;//variavel score
     String player;//variavel user
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +32,14 @@ public class Final extends Activity {
         Bundle extras = playerID.getExtras();
         player = Objects.requireNonNull(extras).getString("player");
         Log.i(TAG, "User ID: " + player + " => Final.class");
+
+        userid = findViewById(R.id.userid);
+        userid.setText(player);
+
+
+        totalScore = findViewById(R.id.totalScore);
+        userSocer = db.getscoreuser(player);
+        //totalScore.setText();
 
 
         //pega no score do user e adiciona pontos

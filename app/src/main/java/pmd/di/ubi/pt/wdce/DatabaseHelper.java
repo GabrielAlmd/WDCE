@@ -79,6 +79,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else
             return false;
     }
+
+
+    public int getscoreuser (String user){
+
+        int score;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select score from user where user=?", new String[]{user});
+
+        score = Integer.parseInt(cursor.getString(0));
+
+        return score;
+    }
     /*
     public boolean addpoints (String user, int points){
         SQLiteDatabase db = this.getReadableDatabase();
