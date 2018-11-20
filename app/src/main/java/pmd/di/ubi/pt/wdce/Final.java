@@ -18,8 +18,9 @@ public class Final extends Activity {
 
     DatabaseHelper db;
 
-    int userSocer;//variavel score
-    String player;//variavel user
+    int userSocer;  //variavel score
+    String player;  //variavel user
+    int scoreUser;
 
 
     @Override
@@ -37,9 +38,10 @@ public class Final extends Activity {
         userid.setText(player);
 
 
-        totalScore = findViewById(R.id.totalScore);
-        userSocer = db.getscoreuser(player);
+        //totalScore = findViewById(R.id.totalScore);
+        //userSocer = db.getscoreuser(player);
         //totalScore.setText();
+
 
 
         //pega no score do user e adiciona pontos

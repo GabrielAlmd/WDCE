@@ -103,4 +103,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         else
             return false;
     }*/
+
+
+    public int getscore (String user){
+
+        int scoreuser = 0;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select score from user where user=?", new String[]{user});
+
+        scoreuser = Integer.parseInt(cursor.getString(0));
+
+        return scoreuser;
+    }
 }
