@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,13 +26,15 @@ public class FristRound extends Activity {
     String right = "";
     String line="";
     String eTextAttempt ="";
+    String player = "";
+    String sfinal = "";
 
 
 
     int certo = 0; //0 - acertou / 1 - Errou
     int scoreround;//valor do score feito
     int nTrys = 1;
-    String player = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,18 +77,16 @@ public class FristRound extends Activity {
 
             StringBuilder builder = new StringBuilder();
             for (int i = 0; i < (right.length()-max); i++) {
-                builder.append("*");
+                builder.append(" _ ");
             }
-            String sfinal = cut+builder.toString();
+            sfinal = cut+builder.toString();
+
             semi.setText(sfinal);
+            Log.i(TAG, "chkifright: o que mostra "+sfinal);
             builder.setLength(0);
 
         }
-
-
-        if(certo == 1){
-
-        }
+        if(certo ==1){}
 
     }
 
@@ -103,6 +104,11 @@ public class FristRound extends Activity {
             Log.i(TAG, "chkifright: score is " + scoreround);
             eTextAttempt = "";
 
+            String toastText = "You score " + scoreround +" !!";
+
+            //Falta guardar adicionar ao score
+
+            Toast.makeText(getApplicationContext(), toastText, Toast.LENGTH_SHORT).show();
             //muda a palavra e segue jogo
             Intent intent = getIntent();
             finish();
@@ -112,15 +118,24 @@ public class FristRound extends Activity {
         else { //Se errado
             nTrys +=1;// adicionar +1 nas variaveis de erro
 
-            //se a varialvel erro < 5
-        //dar clean no editext
-        //e tenta de novo toast
-        //se a variavel erro > 5
+            Log.i(TAG, "chkifright: number of trys " + nTrys);
 
-        //fazer intent para a class lastround
-        //toast está dificil
-        //passar o score e o user
-        //passar a palavra
+            if(nTrys <= 5) {//se a varialvel erro < 5
+                attempt.getText().clear();//dar clean no editext
+                Toast.makeText(getApplicationContext(), "TRY AGAIN!!", Toast.LENGTH_SHORT).show();
+            }
+            else{//se a variavel erro > 5
+
+                //vai buscar o que foi escrito no textview
+
+                //fazer intent para a class lastround
+                Intent idonknow = new Intent(this, LastRound.class);
+                idonknow.putExtra("player",player);
+                idonknow.putExtra("word",right);
+                idonknow.putExtra("display",sfinal);
+                startActivity(idonknow);
+                Toast.makeText(getApplicationContext(), "It's hard not to !!", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

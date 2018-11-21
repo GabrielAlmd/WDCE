@@ -1,13 +1,31 @@
 package pmd.di.ubi.pt.wdce;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.EditText;
+import android.widget.TextView;
 
-public class LastRound extends AppCompatActivity {
+import java.util.Objects;
 
-    //variavel para a palavra
-    //variavel para o user
-    //variavel para o score
+import static android.content.ContentValues.TAG;
+
+public class LastRound extends Activity {
+
+
+    TextView semiTv;
+    EditText attemptEd;
+
+
+    String wright = ""; //variavel para a palavra
+    String eTextAttempt ="";
+    String player = ""; //variavel para o user
+    String putonTv = "";
+
+    int nTrys = 5;
+
     //variavel de tentativas começa as 5
     //variavel 0/1 para detetar (começa a 1)
 
@@ -16,7 +34,24 @@ public class LastRound extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last_round);
 
+        semiTv = findViewById(R.id.semi);
+        attemptEd = findViewById(R.id.attempt);
+
+
+        Intent playerandword = getIntent();
+        Bundle extras = playerandword.getExtras();
+        player = Objects.requireNonNull(extras).getString("player");
+        wright = Objects.requireNonNull(extras).getString("right");
+        putonTv = Objects.requireNonNull(extras).getString("display");
+        Log.i(TAG, "User ID: " + player + " => LastRound.class");
+
+
+        Log.i(TAG, "Right word: " + wright);
+        Log.i(TAG, "Right display: " + putonTv);
+
         //recever a palavra e por no textview
+        semiTv.setText(wright);
+
 
     }
 
