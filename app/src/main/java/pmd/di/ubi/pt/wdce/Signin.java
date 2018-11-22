@@ -34,7 +34,7 @@ public class Signin extends Activity {
 
         //check equals
         if(s1.equals("")||s2.equals("")|| s3.equals("") || s4.equals(""))
-            Toast.makeText(getApplicationContext(), "Fields are empty", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Preencha Tudo", Toast.LENGTH_SHORT).show();
         else {
             if(s3.equals(s4)){
                 Boolean chkuser = db.chkuser(s2);
@@ -42,20 +42,20 @@ public class Signin extends Activity {
                 if(chkmail == true && chkuser == true){
                     Boolean insert = db.insert(s1,s2,s3);
                     if (insert == true){
-                        Toast.makeText(getApplicationContext(), "Registered Successfully", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Registo Feito", Toast.LENGTH_SHORT).show();
                         super.finish();
                     }
                 }
                 else {
                     if(chkmail == false)
-                        Toast.makeText(getApplicationContext(), "Email Already exists", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Email já existe!!", Toast.LENGTH_SHORT).show();
                     if(chkuser == false)
-                        Toast.makeText(getApplicationContext(), "User Already exists", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Usuário já existe!!", Toast.LENGTH_SHORT).show();
                 }
 
             }
             else
-                Toast.makeText(getApplicationContext(), "Password do not match", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Password não corresponde!!", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -63,6 +63,6 @@ public class Signin extends Activity {
 
     public void takeMeBack (View view){
         super.finish();
-        Toast.makeText(getApplicationContext(), "YOU FORGOT YOURSELF TO REGISTER !!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Regista-te lá!!", Toast.LENGTH_SHORT).show();
     }
 }

@@ -83,7 +83,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /*
     public boolean addpoints (String user, int points){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select * from user where user=?", new String[]{user});
+        Cursor cursor = db.rawQuery("Select * from userTable where user=?", new String[]{user});
         if(cursor.getCount()>0) {
             db.rawQuery("")
             return true;
@@ -93,15 +93,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }*/
 
 
-    public int getscore (String user){
-
-        int scoreuser = 0;
+    public Cursor getscore (String user){
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select score from userTable where user=?", new String[]{user});
 
-        scoreuser = Integer.parseInt(cursor.getString(0));
-
-        return scoreuser;
+        return cursor;
     }
 }

@@ -36,6 +36,8 @@ public class FristRound extends Activity {
     int scoreround;//valor do score feito
     int nTrys = 1;
 
+    DatabaseHelper db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +111,7 @@ public class FristRound extends Activity {
             Log.i(TAG, "chkifright: score is " + scoreround);
             eTextAttempt = "";
 
-            String toastText = "You score " + scoreround +" !!";
+            String toastText = "Fez " + scoreround +" pontos !!";
 
             //Falta guardar adicionar ao score
 
@@ -127,11 +129,9 @@ public class FristRound extends Activity {
 
             if(nTrys <= 5) {//se a varialvel erro < 5
                 attempt.getText().clear();//dar clean no editext
-                Toast.makeText(getApplicationContext(), "TRY AGAIN!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "TENTA DE NOVO!!", Toast.LENGTH_SHORT).show();
             }
             else{//se a variavel erro > 5
-
-                //vai buscar o que foi escrito no textview
 
                 //fazer intent para a class lastround
                 Intent idonknow = new Intent(this, LastRound.class);
@@ -141,7 +141,7 @@ public class FristRound extends Activity {
                 bundle.putString("display",sfinal);
                 idonknow.putExtras(bundle);
                 startActivity(idonknow);
-                Toast.makeText(getApplicationContext(), "It's hard not to !!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Está difícil!!", Toast.LENGTH_SHORT).show();
             }
         }
     }

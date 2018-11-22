@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Objects;
 
@@ -59,6 +60,8 @@ public class Final extends Activity {
 
 
     public void closeall (View view){//Funçao fechar por completo
+
+        Toast.makeText(getApplicationContext(), "ADEUS !!", Toast.LENGTH_SHORT).show();
         finishAffinity();
         finish();
     }

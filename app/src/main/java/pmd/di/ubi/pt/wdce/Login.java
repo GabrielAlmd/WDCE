@@ -47,11 +47,11 @@ public class Login extends Activity {
 
             Log.i(TAG, "letsGo: " + user);
 
-            Toast.makeText(getApplicationContext(), "Successfully LogIn", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Consegui entrar :D", Toast.LENGTH_SHORT).show();
 
         }
         else
-            Toast.makeText(getApplicationContext(), "Wrong user or password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Password ou Usuário mal :C", Toast.LENGTH_SHORT).show();
 
     }
 }

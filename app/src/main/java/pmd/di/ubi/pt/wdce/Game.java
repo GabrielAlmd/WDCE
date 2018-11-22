@@ -33,7 +33,7 @@ public class Game extends Activity {
         Bundle extras = playerID.getExtras();
         player = Objects.requireNonNull(extras).getString("player");
 
-        String toprint="Lest Start "+player;
+        String toprint="Vamos começar "+player;
         text.setText(toprint);
         Log.i(TAG, "User ID: " + player + " => Game.class");
 

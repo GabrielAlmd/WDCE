@@ -65,7 +65,7 @@ public class LastRound extends Activity {
         if(right.equals(eTextAttempt)){// se certo
             scoreround = 1000/nTrys; //calcula score
 
-            String toastText = "You score " + scoreround +" !!";
+            String toastText = "Fez " + scoreround +" pontos!!";
 
             //Falta guardar adicionar ao score
 
@@ -81,7 +81,7 @@ public class LastRound extends Activity {
             nTrys += 1;
             Log.i(TAG, "chkword: number of trys " + nTrys);//soma n tentativas
             attempt.getText().clear(); //da clear do edit tex
-            Toast.makeText(getApplicationContext(), "TRY AGAIN!!", Toast.LENGTH_SHORT).show(); //toast tenta de novo
+            Toast.makeText(getApplicationContext(), "TENTA DE NOVO!!", Toast.LENGTH_SHORT).show(); //toast tenta de novo
         }
 
     }
@@ -90,6 +90,7 @@ public class LastRound extends Activity {
     public void changeWord (View view){ //função para desistir
 
         //passa a fristround
+        Toast.makeText(getApplicationContext(), "Deste-te por vencido!!", Toast.LENGTH_SHORT).show();
         Intent nextword = new Intent(this, FristRound.class);
         nextword.putExtra("player",player);
         startActivity(nextword);
