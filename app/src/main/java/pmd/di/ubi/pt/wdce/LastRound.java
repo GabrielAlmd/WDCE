@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Objects;
 
@@ -26,6 +27,7 @@ public class LastRound extends Activity {
     String putonTv = "";
 
     int nTrys = 5;
+    int scoreround = 0;
 
     //variavel de tentativas começa as 5
     //variavel 0/1 para detetar (começa a 1)
@@ -55,21 +57,43 @@ public class LastRound extends Activity {
 
     }
 
-    //funçao para tentativas
-        // se errado
-            //soma n tentativas
-            // mantem a variavel a 1
-            //da clear do edit tex
-            //toast tenta de novo
-        // se certo
-            //calcula score
+    public void chkword (View view){ //funçao para tentativas
+
+        eTextAttempt = attempt.getText().toString();
+        Log.i(TAG, "chkword: try is " + eTextAttempt);
+
+        if(right.equals(eTextAttempt)){// se certo
+            scoreround = 1000/nTrys; //calcula score
+
+            String toastText = "You score " + scoreround +" !!";
+
+            //Falta guardar adicionar ao score
+
+            Toast.makeText(getApplicationContext(), toastText, Toast.LENGTH_SHORT).show();
+
             //volta a função fristround
-            //passa o score e o user
+            Intent igotit = new Intent(this, FristRound.class);
+            igotit.putExtra("player",player);
+            startActivity(igotit);
+        }
+        else{ // se errado
+
+            nTrys += 1;
+            Log.i(TAG, "chkword: number of trys " + nTrys);//soma n tentativas
+            attempt.getText().clear(); //da clear do edit tex
+            Toast.makeText(getApplicationContext(), "TRY AGAIN!!", Toast.LENGTH_SHORT).show(); //toast tenta de novo
+        }
+
+    }
 
 
-    //função para desistir
+    public void changeWord (View view){ //função para desistir
+
         //passa a fristround
-        // passa o score e user
-        //
+        Intent nextword = new Intent(this, FristRound.class);
+        nextword.putExtra("player",player);
+        startActivity(nextword);
+
+    }
 
 }
