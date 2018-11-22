@@ -40,10 +40,9 @@ public class LastRound extends Activity {
 
 
         Intent playerandword = getIntent();
-        Bundle extras = playerandword.getExtras();
-        player = Objects.requireNonNull(extras).getString("player");
-        right = Objects.requireNonNull(extras).getString("right");
-        putonTv = Objects.requireNonNull(extras).getString("display");
+        player = playerandword.getExtras().getString("player");
+        right = playerandword.getExtras().getString("word");
+        putonTv = playerandword.getExtras().getString("display");
         Log.i(TAG, "User ID: " + player + " => LastRound.class");
 
 

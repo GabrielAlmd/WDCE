@@ -135,9 +135,11 @@ public class FristRound extends Activity {
 
                 //fazer intent para a class lastround
                 Intent idonknow = new Intent(this, LastRound.class);
-                idonknow.putExtra("player",player);
-                idonknow.putExtra("word",rightforpass);
-                idonknow.putExtra("display",sfinal);
+                Bundle bundle = new Bundle();
+                bundle.putString("player",player);
+                bundle.putString("word",right);
+                bundle.putString("display",sfinal);
+                idonknow.putExtras(bundle);
                 startActivity(idonknow);
                 Toast.makeText(getApplicationContext(), "It's hard not to !!", Toast.LENGTH_SHORT).show();
             }
