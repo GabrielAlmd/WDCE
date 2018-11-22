@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,11 +16,11 @@ import static android.content.ContentValues.TAG;
 public class LastRound extends Activity {
 
 
-    TextView semiTv;
-    EditText attemptEd;
+    TextView semi;
+    EditText attempt;
 
 
-    String wright = ""; //variavel para a palavra
+    String right = ""; //variavel para a palavra
     String eTextAttempt ="";
     String player = ""; //variavel para o user
     String putonTv = "";
@@ -34,23 +35,23 @@ public class LastRound extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_last_round);
 
-        semiTv = findViewById(R.id.semi);
-        attemptEd = findViewById(R.id.attempt);
+        semi = findViewById(R.id.semi);
+        attempt = findViewById(R.id.attempt);
 
 
         Intent playerandword = getIntent();
         Bundle extras = playerandword.getExtras();
         player = Objects.requireNonNull(extras).getString("player");
-        wright = Objects.requireNonNull(extras).getString("right");
+        right = Objects.requireNonNull(extras).getString("right");
         putonTv = Objects.requireNonNull(extras).getString("display");
         Log.i(TAG, "User ID: " + player + " => LastRound.class");
 
 
-        Log.i(TAG, "Right word: " + wright);
+        Log.i(TAG, "Right word: " + right);
         Log.i(TAG, "Right display: " + putonTv);
 
         //recever a palavra e por no textview
-        semiTv.setText(wright);
+        semi.setText(putonTv);
 
 
     }

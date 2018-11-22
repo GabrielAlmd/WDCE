@@ -24,6 +24,7 @@ public class FristRound extends Activity {
     EditText attempt;
 
     String right = "";
+    String rightforpass ="";
     String line="";
     String eTextAttempt ="";
     String player = "";
@@ -67,10 +68,14 @@ public class FristRound extends Activity {
 
             int index = (int) (Math.random() * listS.size());
             right = listS.get(index);
+            rightforpass = right.toString();
             listS.clear();
-            Log.i(TAG, "Right word " + right);
 
-            int max = (int) (Math.random() * right.length());
+            //Aletrar a quantidade de letras a tirar
+            Log.i(TAG, "Right word " + rightforpass);
+
+            //int max = (int) (Math.random() * right.length()); //curtava de forma aleatória
+            int max = (int) right.length() - 3; // corta x letras da mesma
 
             String cut = right.substring(0,max);
 
@@ -131,7 +136,7 @@ public class FristRound extends Activity {
                 //fazer intent para a class lastround
                 Intent idonknow = new Intent(this, LastRound.class);
                 idonknow.putExtra("player",player);
-                idonknow.putExtra("word",right);
+                idonknow.putExtra("word",rightforpass);
                 idonknow.putExtra("display",sfinal);
                 startActivity(idonknow);
                 Toast.makeText(getApplicationContext(), "It's hard not to !!", Toast.LENGTH_SHORT).show();
