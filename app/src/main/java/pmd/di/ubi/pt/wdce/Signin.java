@@ -40,7 +40,7 @@ public class Signin extends Activity {
                 Boolean chkuser = db.chkuser(s2);
                 Boolean chkmail = db.chkemail(s1);
                 if(chkmail == true && chkuser == true){
-                    Boolean insert = db.insert(s1,s2,s3);
+                    Boolean insert = db.insert(s1,s2,s3,0,1);
                     if (insert == true){
                         Toast.makeText(getApplicationContext(), "Registo Feito", Toast.LENGTH_SHORT).show();
                         super.finish();

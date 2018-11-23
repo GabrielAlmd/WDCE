@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/nowScore"/>
+        app:layout_constraintBottom_toTopOf="@id/level"/>
 
 
     <TextView
@@ -31,19 +31,6 @@
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintTop_toBottomOf="@id/userid"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/nowScore"/>
-
-    <TextView
-        android:id="@+id/nowScore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fez:    pontos"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintTop_toBottomOf="@id/level"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/totalScore"/>
@@ -58,7 +45,7 @@
         android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintTop_toBottomOf="@id/nowScore"
+        app:layout_constraintTop_toBottomOf="@id/level"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/again"/>
@@ -74,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@id/totalScore"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/exit"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toTopOf="@id/rank"/>
 
     <Button
         android:id="@+id/exit"
@@ -87,6 +74,20 @@
         app:layout_constraintTop_toBottomOf="@id/totalScore"
         app:layout_constraintLeft_toRightOf="@id/again"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/rank" />
+
+    <Button
+        android:id="@+id/rank"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Rank"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:onClick="closeall"
+        app:layout_constraintTop_toBottomOf="@id/exit"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+
 </android.support.constraint.ConstraintLayout>

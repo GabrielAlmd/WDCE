@@ -24,14 +24,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //inserir na user
-    public boolean insert (String email, String user, String password){
+    public boolean insert (String email, String user, String password, int score, int level){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("email", email);
         contentValues.put("user", user);
         contentValues.put("password", password);
-        contentValues.put("score", 0);
-        contentValues.put("level",0);
+        contentValues.put("score", score);
+        contentValues.put("level", level);
         long ins = db.insert("userTable", null, contentValues);
         if(ins == -1)
             return false;
