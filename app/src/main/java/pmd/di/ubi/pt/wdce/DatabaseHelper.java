@@ -93,6 +93,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }*/
 
 
+    public Cursor getTopPlayers(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("Select user from userTable order by level desc, score desc;", null);
+
+        return cursor;
+    }
+
     public Cursor getscore (String user){
 
         SQLiteDatabase db = this.getReadableDatabase();

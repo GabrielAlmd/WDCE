@@ -66,4 +66,11 @@ public class Final extends Activity {
         finish();
     }
 
+    public void showrank (View view){
+
+        Intent torank = new Intent(this, Rank.class);
+        torank.putExtra("player", player);
+        startActivity(torank);
+    }
+
 }

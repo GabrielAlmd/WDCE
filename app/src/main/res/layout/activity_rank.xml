@@ -26,6 +26,7 @@
         android:text="Voltar"
         android:textColor="@android:color/white"
         android:backgroundTint="@color/colorPrimaryDark"
+        android:onClick="tofinal"
         app:layout_constraintTop_toBottomOf="@id/listranks"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
