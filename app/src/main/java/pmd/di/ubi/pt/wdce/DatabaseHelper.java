@@ -15,7 +15,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("Create table userTable(email text primary key, user text, password text, score intege, level integer)");
+        db.execSQL("Create table userTable(email text primary key, user text, password text, score int, level int)");
     }
 
     @Override
@@ -42,7 +42,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //check if mail exists
     public boolean chkemail (String email){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select * from userTable where email=?", new String[]{email});
+        Cursor cursor = db.rawQuery("SELECT * FROM userTable WHERE email=?", new String[]{email});
         if(cursor.getCount()>0)
             return false;
         else
@@ -52,7 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //check if user exists
     public boolean chkuser (String user){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select * from userTable where user=?", new String[]{user});
+        Cursor cursor = db.rawQuery("SELECT * FROM userTable WHERE user=?", new String[]{user});
         if(cursor.getCount()>0)
             return false;
         else
@@ -62,7 +62,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //check password
     public boolean chkpass (String password){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select * from userTable where password=?", new String[]{password});
+        Cursor cursor = db.rawQuery("SELECT * FROM userTable WHERE password=?", new String[]{password});
         if(cursor.getCount()>0)
             return false;
         else
@@ -73,39 +73,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //check the user and password
     public boolean match (String user, String password){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select * from userTable where user=? and password=?", new String[]{user, password});
+        Cursor cursor = db.rawQuery("SELECT * FROM userTable WHERE user=? AND password=?", new String[]{user, password});
         if(cursor.getCount()>0)
             return true;
         else
             return false;
     }
 
-    /*
-    public boolean addpoints (String user, int points){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select * from userTable where user=?", new String[]{user});
-        if(cursor.getCount()>0) {
-            db.rawQuery("")
-            return true;
-        }
-        else
-            return false;
-    }*/
-
-
     public Cursor getTopPlayers(){
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("Select user from userTable order by level desc, score desc;", null);
+        Cursor cursor = db.rawQuery("SELECT user FROM userTable ORDER BY level DESC, score DESC;", null);
 
         return cursor;
     }
 
-    public Cursor getscore (String user){
+    public Cursor getScoreUser (String user){
 
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select score from userTable where user=?", new String[]{user});
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT score FROM userTable WHERE user=?", new String[]{user});
 
         return cursor;
     }
+
+    public Cursor getLevelUser (String user){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        Cursor cursor = db.rawQuery("SELECT level FROM userTable WHERE user=?",new String[]{user});
+
+        return  cursor;
+    }
+
+
 }

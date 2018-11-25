@@ -19,11 +19,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/level"/>
+        app:layout_constraintBottom_toTopOf="@id/userlevel"/>
 
 
     <TextView
-        android:id="@+id/level"
+        android:id="@+id/userlevel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nivel atual : x"
@@ -45,7 +45,7 @@
         android:textSize="20dp"
         android:textStyle="bold"
         android:textColor="@color/colorPrimaryDark"
-        app:layout_constraintTop_toBottomOf="@id/level"
+        app:layout_constraintTop_toBottomOf="@id/userlevel"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/again"/>
