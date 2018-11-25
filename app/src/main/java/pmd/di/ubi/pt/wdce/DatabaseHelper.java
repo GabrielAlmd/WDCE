@@ -92,7 +92,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT score FROM userTable WHERE user=?", new String[]{user});
+        Cursor cursor = db.rawQuery("SELECT score FROM userTable WHERE user="+user+";", null);
 
         return cursor;
     }
@@ -101,7 +101,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT level FROM userTable WHERE user=?",new String[]{user});
+        Cursor cursor = db.rawQuery("SELECT level FROM userTable WHERE user="+user+";", null);
 
         return  cursor;
     }

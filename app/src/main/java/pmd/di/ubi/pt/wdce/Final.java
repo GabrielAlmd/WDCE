@@ -79,7 +79,7 @@ public class Final extends Activity {
         if(cursor.getCount() == 0){
             Toast.makeText(this, "Não consegui ir buscar dados!!", Toast.LENGTH_SHORT).show();
         }else{
-            String text = "Nível atual : " + cursor.getInt(0);
+            String text = "Nível atual : " + Integer.parseInt(cursor.getString(0));
             userlevel.setText(text);
         }
     }
@@ -90,7 +90,7 @@ public class Final extends Activity {
         if(cursor.getCount() == 0){
             Toast.makeText(this, "Não consegui ir buscar dados!!", Toast.LENGTH_SHORT).show();
         }else{
-            String text = "Potos coletados : " + cursor.getInt(0);
+            String text = "Potos coletados : " + Integer.parseInt(cursor.getString(0));
             userlevel.setText(text);
         }
 
