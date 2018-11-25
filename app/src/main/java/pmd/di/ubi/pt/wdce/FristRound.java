@@ -70,14 +70,14 @@ public class FristRound extends Activity {
 
             int index = (int) (Math.random() * listS.size());
             right = listS.get(index);
-            rightforpass = right.toString();
+            rightforpass = right;
             listS.clear();
 
             //Aletrar a quantidade de letras a tirar
             Log.i(TAG, "Right word " + rightforpass);
 
             //int max = (int) (Math.random() * right.length()); //curtava de forma aleatória
-            int max = (int) right.length() - 3; // corta x letras da mesma
+            int max = right.length() - 3; // corta x letras da mesma
 
             String cut = right.substring(0,max);
 
@@ -93,7 +93,6 @@ public class FristRound extends Activity {
             builder.setLength(0);
 
         }
-        if(certo ==1){}
 
     }
 
@@ -107,13 +106,14 @@ public class FristRound extends Activity {
         if (eTextAttempt.equals(right)) {//Se certo
             certo = 0;//Mete a variavel de certo a 0
             scoreround = (1000 / nTrys); //calcula o score
+            db = new DatabaseHelper(this);
 
             Log.i(TAG, "chkifright: score is " + scoreround);
             eTextAttempt = "";
 
             String toastText = "Fez " + scoreround +" pontos !!";
 
-            //Falta guardar adicionar ao score
+            //db.addpoints(player,scoreround);//Falta guardar adicionar ao score
 
             Toast.makeText(getApplicationContext(), toastText, Toast.LENGTH_SHORT).show();
             //muda a palavra e segue jogo
@@ -123,6 +123,7 @@ public class FristRound extends Activity {
 
         }
         else { //Se errado
+            certo = 1;
             nTrys +=1;// adicionar +1 nas variaveis de erro
 
             Log.i(TAG, "chkifright: number of trys " + nTrys);

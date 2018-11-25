@@ -80,6 +80,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
     }
 
+    public void addpoints (String user, int add){
+        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db2 = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT score FROM userTable WHERE user="+user+";",null);
+
+        int oldScore = Integer.parseInt(cursor.getString(0));
+        int newScore = oldScore + add;
+
+        db2.rawQuery("UPDATE userTable SET score="+newScore+" WHERE user="+user+";",null);
+
+    }
+
+
     public Cursor getTopPlayers(){
         SQLiteDatabase db = this.getWritableDatabase();
 
