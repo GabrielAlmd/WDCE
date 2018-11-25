@@ -45,7 +45,7 @@ public class LastRound extends Activity {
         player = playerandword.getExtras().getString("player");
         right = playerandword.getExtras().getString("word");
         putonTv = playerandword.getExtras().getString("display");
-        Log.i(TAG, "User ID: " + player + " => LastRound.class");
+        Log.i(TAG, "UserProvider ID: " + player + " => LastRound.class");
 
 
         Log.i(TAG, "Right word: " + right);

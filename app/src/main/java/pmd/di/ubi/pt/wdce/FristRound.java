@@ -51,7 +51,7 @@ public class FristRound extends Activity {
         Intent playerID = getIntent();
         Bundle extras = playerID.getExtras();
         player = Objects.requireNonNull(extras).getString("player");
-        Log.i(TAG, "User ID: " + player + " => FristRound.class");
+        Log.i(TAG, "UserProvider ID: " + player + " => FristRound.class");
 
         if(certo == 0){
             //le  o ficheiro mete num vetor e seleciona uma palavra rand

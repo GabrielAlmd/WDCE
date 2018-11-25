@@ -35,7 +35,7 @@ public class Game extends Activity {
 
         String toprint="Vamos começar "+player;
         text.setText(toprint);
-        Log.i(TAG, "User ID: " + player + " => Game.class");
+        Log.i(TAG, "UserProvider ID: " + player + " => Game.class");
 
     }
 

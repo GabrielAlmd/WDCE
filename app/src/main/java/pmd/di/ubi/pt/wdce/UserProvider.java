@@ -1,6 +1,6 @@
 package pmd.di.ubi.pt.wdce;
 
-public class User {
+public class UserProvider {
 
     private String email;
     private String username;
@@ -9,7 +9,7 @@ public class User {
     private Integer level;
 
 
-    public User(String email, String username, String password, Integer score, Integer level) {
+    public UserProvider(String email, String username, String password, Integer score, Integer level) {
         this.email = email;
         this.username = username;
         this.password = password;

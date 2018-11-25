@@ -33,7 +33,7 @@ public class Final extends Activity {
         Intent playerID = getIntent();
         Bundle extras = playerID.getExtras();
         player = Objects.requireNonNull(extras).getString("player");
-        Log.i(TAG, "User ID: " + player + " => Final.class");
+        Log.i(TAG, "UserProvider ID: " + player + " => Final.class");
 
         userid = findViewById(R.id.userid);
         userid.setText(player);
