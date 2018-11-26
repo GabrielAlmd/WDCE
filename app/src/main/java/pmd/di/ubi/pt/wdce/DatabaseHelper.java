@@ -83,12 +83,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void addpoints (String user, int add){
         SQLiteDatabase db = this.getWritableDatabase();
         SQLiteDatabase db2 = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT score FROM userTable WHERE user="+user+";",null);
+        Cursor cursor = db.rawQuery("SELECT score FROM userTable WHERE user='"+user+"';",null);
 
-        int oldScore = Integer.parseInt(cursor.getString(0));
+        int oldScore = cursor.getInt(0);
         int newScore = oldScore + add;
 
-        db2.rawQuery("UPDATE userTable SET score="+newScore+" WHERE user="+user+";",null);
+        db2.rawQuery("UPDATE userTable SET score="+newScore+" WHERE user='"+user+"';",null);
 
     }
 
@@ -105,7 +105,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT score FROM userTable WHERE user="+user+";", null);
+        Cursor cursor = db.rawQuery("SELECT score FROM userTable WHERE user='"+user+"';", null);
 
         return cursor;
     }
@@ -114,7 +114,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT level FROM userTable WHERE user="+user+";", null);
+        Cursor cursor = db.rawQuery("SELECT level FROM userTable WHERE user='"+user+"';", null);
 
         return  cursor;
     }
