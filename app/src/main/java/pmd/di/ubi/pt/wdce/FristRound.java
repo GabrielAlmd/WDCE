@@ -30,10 +30,9 @@ public class FristRound extends Activity {
     String player = "";
     String sfinal = "";
 
-
-
+    int scoreTotal;
     int certo = 0; //0 - acertou / 1 - Errou
-    int scoreround;//valor do score feito
+    int scoreround; //valor do score feito
     int nTrys = 1;
 
     DatabaseHelper db;
@@ -51,6 +50,7 @@ public class FristRound extends Activity {
         Intent playerID = getIntent();
         Bundle extras = playerID.getExtras();
         player = Objects.requireNonNull(extras).getString("player");
+        scoreTotal = Objects.requireNonNull(extras).getInt("scoregame");
         Log.i(TAG, "UserProvider ID: " + player + " => FristRound.class");
 
         if(certo == 0){
@@ -112,12 +112,13 @@ public class FristRound extends Activity {
             eTextAttempt = "";
 
             String toastText = "Fez " + scoreround +" pontos !!";
-
-            //db.addpoints(player,scoreround);//Falta guardar adicionar ao score
-
+            scoreTotal +=  scoreround;
             Toast.makeText(getApplicationContext(), toastText, Toast.LENGTH_SHORT).show();
+
+
             //muda a palavra e segue jogo
             Intent intent = getIntent();
+            intent.putExtra("scoregame",scoreTotal);
             finish();
             startActivity(intent);
 
@@ -140,6 +141,7 @@ public class FristRound extends Activity {
                 bundle.putString("player",player);
                 bundle.putString("word",right);
                 bundle.putString("display",sfinal);
+                bundle.putInt("scoregame",scoreTotal);
                 idonknow.putExtras(bundle);
                 startActivity(idonknow);
                 Toast.makeText(getApplicationContext(), "Está difícil!!", Toast.LENGTH_SHORT).show();
@@ -150,7 +152,10 @@ public class FristRound extends Activity {
     public void imgone (View view){
 
         Intent letmego = new Intent(this, Final.class);
-        letmego.putExtra("player",player);
+        Bundle bundle = new Bundle();
+        bundle.putString("player",player);
+        bundle.putInt("scoregame",scoreTotal);
+        letmego.putExtras(bundle);
         startActivity(letmego);
     }
 

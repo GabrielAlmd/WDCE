@@ -16,14 +16,13 @@ import static android.content.ContentValues.TAG;
 public class Final extends Activity {
 
     TextView userid;
-    TextView totalScore;
+    TextView Total;
     TextView userlevel;
 
     DatabaseHelper db;
 
-    int userSocer;  //variavel score
     String player;  //variavel user
-    int scoreUser;
+    int scoreTotal; //variavel score
 
 
     @Override
@@ -35,25 +34,27 @@ public class Final extends Activity {
         Intent playerID = getIntent();
         Bundle extras = playerID.getExtras();
         player = Objects.requireNonNull(extras).getString("player");
+        scoreTotal = Objects.requireNonNull(extras).getInt("scoregame");
         Log.i(TAG, "UserProvider ID: " + player + " => Final.class");
 
         userid = (TextView) findViewById(R.id.userid);
-        totalScore = (TextView) findViewById(R.id.totalScore);
+        Total = (TextView) findViewById(R.id.totalScore);
         userlevel = (TextView) findViewById(R.id.userlevel);
 
 
         userid.setText(player);
-
-        //UserLevel(player);
-
-        //UserScore(player);
+        Total.setText("Pontos : "+ scoreTotal);
+        //definir nivel
 
     }
 
 
     public void lestgoagain (View view){//Função vamos de novo
-        Intent again = new Intent(this, Game.class);
-        again.putExtra("player",player);
+        Intent again = new Intent(this, FristRound.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("player",player);
+        bundle.putInt("scoregame",scoreTotal);
+        again.putExtras(bundle);
         startActivity(again);
     }
 
@@ -71,7 +72,7 @@ public class Final extends Activity {
         torank.putExtra("player", player);
         startActivity(torank);
     }
-
+    /*
     private void UserLevel(String player) {
 
         Cursor cursor = db.getLevelUser(player);
@@ -94,6 +95,6 @@ public class Final extends Activity {
             userlevel.setText(text);
         }
 
-    }
+    }*/
 
 }

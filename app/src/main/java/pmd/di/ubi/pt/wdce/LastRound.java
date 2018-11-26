@@ -28,6 +28,7 @@ public class LastRound extends Activity {
 
     int nTrys = 5;
     int scoreround = 0;
+    int scoreTotal;
 
     //variavel de tentativas começa as 5
     //variavel 0/1 para detetar (começa a 1)
@@ -45,13 +46,14 @@ public class LastRound extends Activity {
         player = playerandword.getExtras().getString("player");
         right = playerandword.getExtras().getString("word");
         putonTv = playerandword.getExtras().getString("display");
+        scoreTotal = playerandword.getExtras().getInt("scoregame");
         Log.i(TAG, "UserProvider ID: " + player + " => LastRound.class");
 
 
         Log.i(TAG, "Right word: " + right);
         Log.i(TAG, "Right display: " + putonTv);
 
-        //recever a palavra e por no textview
+        //recever a palavra e poe no textview
         semi.setText(putonTv);
 
 
@@ -67,13 +69,15 @@ public class LastRound extends Activity {
 
             String toastText = "Fez " + scoreround +" pontos!!";
 
-            //Falta guardar adicionar ao score
+
+            scoreTotal += scoreround; //adicionar ao score
 
             Toast.makeText(getApplicationContext(), toastText, Toast.LENGTH_SHORT).show();
 
             //volta a função fristround
             Intent igotit = new Intent(this, FristRound.class);
             igotit.putExtra("player",player);
+            igotit.putExtra("scoregame",scoreTotal);
             startActivity(igotit);
         }
         else{ // se errado
@@ -92,7 +96,10 @@ public class LastRound extends Activity {
         //passa a fristround
         Toast.makeText(getApplicationContext(), "Deste-te por vencido!!", Toast.LENGTH_SHORT).show();
         Intent nextword = new Intent(this, FristRound.class);
-        nextword.putExtra("player",player);
+        Bundle bundle = new Bundle();
+        bundle.putString("player",player);
+        bundle.putInt("scoregame",scoreTotal);
+        nextword.putExtras(bundle);
         startActivity(nextword);
 
     }

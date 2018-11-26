@@ -44,7 +44,10 @@ public class Game extends Activity {
 
 
         Intent letmeplay = new Intent(this, FristRound.class);
-        letmeplay.putExtra("player",player);
+        Bundle bundle = new Bundle();
+        bundle.putString("player",player);
+        bundle.putInt("scoregame",0);
+        letmeplay.putExtras(bundle);
         startActivity(letmeplay);
     }
 
