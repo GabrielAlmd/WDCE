@@ -85,11 +85,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db2 = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT score FROM userTable WHERE user='"+user+"';",null);
 
-        int oldScore = cursor.getInt(0);
+        int oldScore =Integer.parseInt(cursor.getString(0));
         int newScore = oldScore + add;
 
         db2.rawQuery("UPDATE userTable SET score="+newScore+" WHERE user='"+user+"';",null);
 
+    }
+
+    public void chklevel(String user, int points){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery("SELECT level FROM userTable WHERE user='"+user+"';",null);
+        if(points > 1000){
+            SQLiteDatabase db2 = this.getWritableDatabase();
+            int levelup = Integer.parseInt(cursor.getString(0))+1;
+            db2.rawQuery("UPDATE userTable SET level="+levelup+" WHERE user='"+user+"';",null);
+        }
     }
 
 
